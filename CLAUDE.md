@@ -183,6 +183,117 @@ O código deve ser desacoplado desde o início. Nunca criar código que dependa 
 
 ---
 
+## COMPATIBILIDADE PHP — REGRA CRÍTICA
+
+**Todo código gerado deve ser compatível com PHP 7.4.**
+
+Servidores de hospedagem compartilhada (Hostinger, Locaweb, GoDaddy, etc.) frequentemente rodam PHP 7.x. Usar sintaxe PHP 8.0+ causa parse error fatal e impede o carregamento do plugin.
+
+### Sintaxe PROIBIDA (PHP 8.0+)
+
+**Union types em assinaturas de função:**
+```php
+// ERRADO — PHP 8.0+
+public function get(): array|\WP_Error {}
+public function set(int|string $value): void {}
+```
+```php
+// CORRETO — PHP 7.4
+/** @return array|\WP_Error */
+public function get() {}
+/** @param int|string $value */
+public function set($value): void {}
+```
+
+**Match expression:**
+```php
+// ERRADO — PHP 8.0+
+$result = match($status) {
+    'active' => true,
+    'inactive' => false,
+};
+```
+```php
+// CORRETO — PHP 7.4
+switch ($status) {
+    case 'active':
+        $result = true;
+        break;
+    case 'inactive':
+        $result = false;
+        break;
+}
+```
+
+**Constructor property promotion:**
+```php
+// ERRADO — PHP 8.0+
+public function __construct(
+    private string $name,
+    private int $id
+) {}
+```
+```php
+// CORRETO — PHP 7.4
+private $name;
+private $id;
+
+public function __construct(string $name, int $id) {
+    $this->name = $name;
+    $this->id   = $id;
+}
+```
+
+**Tipo `mixed` como type hint:**
+```php
+// ERRADO — PHP 8.0+
+public function process(mixed $data): mixed {}
+```
+```php
+// CORRETO — PHP 7.4
+/** @param mixed $data @return mixed */
+public function process($data) {}
+```
+
+**Nullsafe operator:**
+```php
+// ERRADO — PHP 8.0+
+$city = $user?->getAddress()?->city;
+```
+```php
+// CORRETO — PHP 7.4
+$address = $user ? $user->getAddress() : null;
+$city    = $address ? $address->city : null;
+```
+
+**Named arguments:**
+```php
+// ERRADO — PHP 8.0+
+array_slice(array: $items, offset: 0, length: 5);
+```
+```php
+// CORRETO — PHP 7.4
+array_slice($items, 0, 5);
+```
+
+### Regras de type hints permitidas no PHP 7.4
+
+Permitido:
+- `: string`, `: int`, `: float`, `: bool`, `: array`, `: void`, `: self`, `: ?string` (nullable)
+- `?Type` para nullable simples
+
+Proibido como type hint (usar apenas em PHPDoc):
+- `int|string` (union)
+- `mixed`
+- `never`
+- `array|\WP_Error` (union com classe)
+
+### Verificação obrigatória antes de gerar o ZIP
+
+Antes de gerar o ZIP, revisar todos os arquivos PHP gerados e confirmar que nenhum usa sintaxe PHP 8.0+. Se encontrar, corrigir antes de zipar.
+
+---
+
 ## PADRÃO DE CAMINHOS
 
 Sempre usar barra normal `/`. Nunca usar barra invertida `\`.
@@ -218,4 +329,5 @@ Todo projeto deve ser pensado como SaaS desde o início:
 - [ ] Documentação atualizada
 - [ ] Caminhos usando `/`
 - [ ] Licença criada SOMENTE se solicitada
+- [ ] Todos os arquivos PHP verificados — sem sintaxe PHP 8.0+ (union types, match, constructor promotion, mixed, nullsafe, named args)
 - [ ] ZIP gerado automaticamente em `releases/`

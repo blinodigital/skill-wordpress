@@ -7,6 +7,17 @@ Versionamento baseado em [Semantic Versioning](https://semver.org/lang/pt-BR/)
 
 ---
 
+## [1.4.0] - 2026-06-11
+
+### Adicionado
+- Regra obrigatória de compatibilidade PHP 7.4 em todos os arquivos gerados
+- Proibição explícita de: union types, match expression, constructor property promotion, tipo `mixed`, nullsafe operator e named arguments
+- Exemplos de código ERRADO vs CORRETO para cada caso PHP 8.0+
+- Verificação PHP 7.4 adicionada ao checklist de entrega
+- Causa raiz documentada: servidores como Hostinger rodam PHP 7.x — usar PHP 8.0+ causa parse error fatal em todos os arquivos com a sintaxe incompatível
+
+---
+
 ## [1.3.0] - 2026-06-11
 
 ### Corrigido
