@@ -7,6 +7,16 @@ Versionamento baseado em [Semantic Versioning](https://semver.org/lang/pt-BR/)
 
 ---
 
+## [1.2.0] - 2026-06-11
+
+### Alterado
+- Plugin gerado agora fica dentro de uma pasta com o slug do projeto (ex: `meu-plugin/`)
+- Arquivo principal do plugin gerado com o nome correto (`meu-plugin.php`)
+- Memória, docs, releases e tests permanecem na raiz do projeto
+- README atualizado com estrutura correta
+
+---
+
 ## [1.1.0] - 2026-06-11
 
 ### Adicionado

@@ -34,49 +34,50 @@ Somente após receber as duas respostas, crie toda a estrutura no diretório atu
 
 ## REGRA CRÍTICA DE DIRETÓRIO
 
-**NUNCA criar uma pasta raiz com o nome do projeto.**
+O plugin deve ficar dentro de uma pasta com o slug do projeto. O slug é o nome do projeto em letras minúsculas com hífens (ex: "Meu Plugin" → `meu-plugin`).
 
-Todo o conteúdo deve ser criado DIRETAMENTE no diretório atual onde o projeto foi aberto.
+Memória, docs, releases e tests ficam na raiz do projeto.
+
+ESTRUTURA CORRETA:
+```
+/nome-do-slug/          ← pasta do plugin (nomeada com o slug do projeto)
+/memory/
+/docs/
+/releases/
+/tests/
+```
 
 ERRADO:
 ```
-/nome-do-projeto/plugin/...
-/nome-do-projeto/memory/...
+/plugin/                ← genérico, não usar
+/nome-do-slug/memory/  ← memória NÃO fica dentro do plugin
 ```
-
-CORRETO:
-```
-/plugin/...
-/memory/...
-/docs/...
-```
-
-O nome do projeto é usado apenas como metadado em `memory/project.md`, não como pasta.
 
 ---
 
 ## ESTRUTURA OBRIGATÓRIA DO PROJETO
 
-Criar no diretório atual após o onboarding:
+Criar no diretório atual após o onboarding, onde `{slug}` é o slug do nome do projeto:
 
 ```
-/plugin/
-/plugin/admin/
-/plugin/admin/views/
-/plugin/admin/controllers/
-/plugin/public/
-/plugin/public/views/
-/plugin/includes/
-/plugin/core/
-/plugin/api/
-/plugin/api/endpoints/
-/plugin/database/
-/plugin/licenses/
-/plugin/templates/
-/plugin/assets/
-/plugin/assets/css/
-/plugin/assets/js/
-/plugin/assets/images/
+/{slug}/
+/{slug}/admin/
+/{slug}/admin/views/
+/{slug}/admin/controllers/
+/{slug}/public/
+/{slug}/public/views/
+/{slug}/includes/
+/{slug}/core/
+/{slug}/api/
+/{slug}/api/endpoints/
+/{slug}/database/
+/{slug}/licenses/
+/{slug}/templates/
+/{slug}/assets/
+/{slug}/assets/css/
+/{slug}/assets/js/
+/{slug}/assets/images/
+/{slug}/{slug}.php       ← arquivo principal do plugin
 /docs/
 /memory/
 /releases/

@@ -49,9 +49,12 @@ Após responder, toda a estrutura profissional será criada **dentro da sua past
 
 ## O que é gerado automaticamente
 
+O slug do projeto é gerado automaticamente a partir do nome (ex: "Meu Plugin" → `meu-plugin`).
+
 ```
 seu-projeto/
-├── plugin/
+├── meu-plugin/              ← pasta do plugin (nomeada com o slug)
+│   ├── meu-plugin.php       ← arquivo principal
 │   ├── admin/
 │   ├── public/
 │   ├── includes/
