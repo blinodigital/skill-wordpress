@@ -7,6 +7,17 @@ Versionamento baseado em [Semantic Versioning](https://semver.org/lang/pt-BR/)
 
 ---
 
+## [1.3.0] - 2026-06-11
+
+### Corrigido
+- Primeira resposta agora é SOMENTE `NOME DO PROJETO:` sem introdução — auto-start real sem precisar enviar mensagem
+- ZIP gerado automaticamente ao final de toda entrega, sem precisar solicitar
+- ZIP agora lê `memory/project.md` para obter slug e versão correta antes de gerar
+- Sistema de licença removido do padrão — criado SOMENTE se o cliente solicitar explicitamente
+- Adicionada regra obrigatória de leitura de toda a memória antes de criar qualquer arquivo ou código
+
+---
+
 ## [1.2.0] - 2026-06-11
 
 ### Alterado
