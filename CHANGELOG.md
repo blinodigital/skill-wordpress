@@ -7,6 +7,19 @@ Versionamento baseado em [Semantic Versioning](https://semver.org/lang/pt-BR/)
 
 ---
 
+## [1.1.0] - 2026-06-11
+
+### Adicionado
+- `CLAUDE.md` — ativação automática sem necessidade de digitar slash command
+- Detecção de primeiro uso via `memory/project.md`
+- Fluxo de onboarding automático ao abrir o projeto
+
+### Corrigido
+- Skill não criava mais pasta raiz com o nome do projeto — agora cria tudo no diretório atual
+- Instruções de instalação simplificadas no README
+
+---
+
 ## [1.0.0] - 2026-06-11
 
 ### Adicionado

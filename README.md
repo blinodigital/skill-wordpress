@@ -2,57 +2,55 @@
 
 Skill para Claude Code que transforma o assistente em um Desenvolvedor Full Stack Sênior especializado em WordPress SaaS.
 
-## O que esta skill faz
+## Como instalar
 
-Ao ativar esta skill, o Claude assume o papel de um arquiteto de software sênior especializado em:
+### Opção 1 — Clonar direto na pasta do projeto
 
-- WordPress Plugin Premium
-- Arquitetura SaaS escalável
-- WooCommerce
-- APIs REST
-- Sistemas preparados para migração VPS
-- Versionamento e geração de ZIP automática
-- Memória permanente de projeto
-
-## Instalação
-
-### Opção 1 — Clonar o repositório
+Abra o terminal **dentro da pasta do seu projeto** e execute:
 
 ```bash
-git clone https://github.com/seu-usuario/skill-wordpress.git
-```
-
-Copie a pasta `.claude` para a raiz do seu projeto:
-
-```bash
-cp -r skill-wordpress/.claude /seu-projeto/.claude
+git clone https://github.com/blinodigital/skill-wordpress.git .skill-temp
+cp .skill-temp/CLAUDE.md ./CLAUDE.md
+cp -r .skill-temp/.claude ./.claude
+rm -rf .skill-temp
 ```
 
 ### Opção 2 — Download ZIP
 
 1. Baixe o ZIP deste repositório
 2. Extraia o arquivo
-3. Copie a pasta `.claude` para a raiz do seu projeto
+3. Copie `CLAUDE.md` e a pasta `.claude/` para a **raiz do seu projeto**
+
+### Estrutura necessária no seu projeto
+
+```
+seu-projeto/
+├── CLAUDE.md         ← obrigatório
+└── .claude/
+    └── commands/
+        └── wordpress-saas.md
+```
 
 ## Como usar
 
-Dentro do seu projeto com Claude Code, digite:
+Após instalar, **abra o projeto no Claude Code**.
+
+O assistente iniciará automaticamente e fará duas perguntas:
 
 ```
-/wordpress-saas
+NOME DO PROJETO:
 ```
 
-O Claude irá solicitar:
+```
+DESCREVA O PROJETO:
+```
 
-1. **Nome do Projeto**
-2. **Descrição do Projeto**
+Após responder, toda a estrutura profissional será criada **dentro da sua pasta atual**.
 
-E em seguida criará automaticamente toda a estrutura profissional.
-
-## Estrutura gerada automaticamente
+## O que é gerado automaticamente
 
 ```
-/nome-do-projeto
+seu-projeto/
 ├── plugin/
 │   ├── admin/
 │   ├── public/
@@ -63,26 +61,30 @@ E em seguida criará automaticamente toda a estrutura profissional.
 │   ├── licenses/
 │   ├── templates/
 │   └── assets/
-├── docs/
 ├── memory/
+│   ├── project.md
+│   ├── features.md
+│   ├── todo.md
+│   ├── changelog.md
+│   └── architecture.md
+├── docs/
 ├── releases/
-├── tests/
-└── github/
+└── tests/
 ```
 
 ## Recursos incluídos
 
-- Arquitetura desacoplada (preparada para VPS)
+- Arquitetura desacoplada (preparada para VPS futura)
 - Sistema de licença completo
 - Versionamento semântico automático
-- Geração de ZIP após cada alteração
+- Geração de ZIP após cada entrega
 - Memória permanente do projeto
-- Estrutura GitHub com commits semânticos
 - Padrões SOLID, Clean Code, PSR
+- Estrutura SaaS multiusuário
 
 ## Versão
 
-**v1.0.0** — Lançamento inicial
+**v1.1.0**
 
 ## Changelog
 
